@@ -63,25 +63,21 @@
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-capture-templates
-        `(
-          ;;("w" "Web bookmarks" entry
-          ;; (file+headline ,(concat org-directory "/www.org") "Bookmarks")
-          ;; "* %u %?%c %^g\n %i")
-
-          ("w" "Temp Links from the interwebs" item
-           (file+headline "~/org/www.org" "Temporary Links")
-           "%?\nEntered on %U\n \%i\n %a")
+        '(
+          ("w" "Web bookmarks" entry
+           (file+headline (concat org-directory "/www.org") "Bookmarks")
+           "* %u %?%a %^g\n %i\n")
 
           ("t" "Tasks" entry
-           (file+headline ,(concat org-directory "/tasks.org") "Tasks")
+           (file+headline (concat org-directory "/tasks.org") "Tasks")
            "* TODO %^{Task}  %^G\n   %?\n  %a")
 
           ("j" "Journal" entry
-           (file+datetree ,(concat org-directory "/journal.org"))
+           (file+datetree (concat org-directory "/journal.org"))
            "* %U %^{Title}\n  %?%i\n  %a")
 
           ("n" "Notes" entry
-           (file+headline ,(concat org-directory "/notes.org") "Notes")
+           (file+headline (concat org-directory "/notes.org") "Notes")
            "* %^{Header}  %^G\n  %u\n\n  %?")))
   )
 
