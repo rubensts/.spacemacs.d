@@ -57,15 +57,20 @@
      (R . t)
      (ruby . t)
      (sh . t)
-     (sql . nil)))
+     (sql . t)))
 
   ;; org-capture
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-capture-templates
-        `(("w" "Web bookmarks" entry
-           (file+headline ,(concat org-directory "/www.org") "Bookmarks")
-           "* %u %?%c %^g\n %i")
+        `(
+          ;;("w" "Web bookmarks" entry
+          ;; (file+headline ,(concat org-directory "/www.org") "Bookmarks")
+          ;; "* %u %?%c %^g\n %i")
+
+          ("w" "Temp Links from the interwebs" item
+           (file+headline "~/org/www.org" "Temporary Links")
+           "%?\nEntered on %U\n \%i\n %a")
 
           ("t" "Tasks" entry
            (file+headline ,(concat org-directory "/tasks.org") "Tasks")
