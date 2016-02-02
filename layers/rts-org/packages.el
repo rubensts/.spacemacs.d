@@ -70,7 +70,8 @@
 
           ("t" "Tasks" entry
            (file+headline (concat org-directory "/tasks.org") "Tasks")
-           "* TODO %^{Task} %^G\n %?\n %a")
+           "* ☛ TODO %^{Task} %^G\n %?\n %a" :clock-in t :clock-resume t)
+          ;;"* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 
           ("j" "Journal" entry
            (file+datetree (concat org-directory "/journal.org"))
@@ -88,10 +89,23 @@
         '((sequence "☛ TODO(t)"
                     "|"
                     "✔ DONE(d)")
-          (sequence "⚑ WAITING(w)"
+          (sequence "⚑ WAIT(w)"
                     "|")
           (sequence "|"
-                    "✘ CANCELLED(c)")))
+                    "✘ CANCEL(c)")))
+
+  (setq org-todo-keyword-faces
+        '(
+          ("☛ TODO"  :foreground "#ff4500" :weight bold)
+          ("✔ DONE"   :foreground "#00ff7f" :weight bold)
+          ("⚑ WAIT"   :foreground "#ffff00" :weight bold)
+          ("✘ CANCEL" :foreground "#00bfff" :weight bold)
+          ))
+
+
+  ;; Clocking work time
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
 
   )
 
