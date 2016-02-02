@@ -66,19 +66,33 @@
         '(
           ("w" "Web bookmarks" entry
            (file+headline (concat org-directory "/www.org") "Bookmarks")
-           "* %u %?%a %^g\n %i\n")
+           "* %?%c %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%i\n" :empty-lines 1)
 
           ("t" "Tasks" entry
            (file+headline (concat org-directory "/tasks.org") "Tasks")
-           "* TODO %^{Task}  %^G\n   %?\n  %a")
+           "* TODO %^{Task} %^G\n %?\n %a")
 
           ("j" "Journal" entry
            (file+datetree (concat org-directory "/journal.org"))
-           "* %U %^{Title}\n  %?%i\n  %a")
+           "* %U %^{Title}\n %?%i\n %a")
 
           ("n" "Notes" entry
            (file+headline (concat org-directory "/notes.org") "Notes")
-           "* %^{Header}  %^G\n  %u\n\n  %?")))
+           "* %^{Header} %^G\n %u\n\n %?")))
+
+  ;; General org settings
+  (setq org-tags-column -80)
+
+  ;; project management
+  (setq org-todo-keywords
+        '((sequence "☛ TODO(t)"
+                    "|"
+                    "✔ DONE(d)")
+          (sequence "⚑ WAITING(w)"
+                    "|")
+          (sequence "|"
+                    "✘ CANCELLED(c)")))
+
   )
 
 (defun rts-org/init-org-protocol ()
