@@ -58,17 +58,18 @@
 
           ("k" "Tasks" entry
            (file+headline (concat org-directory "/tasks.org") "Tasks")
-           "* ☛ TODO %^{Task} %^g\n %?\n %a"
+           "* ☛ TODO %^{Task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?%i"
           :empty-lines 1)
 
-          ("tl" "Todo Log" entry
+          ("t" "Todo")
+          ("ti" "Todo - Intagible" entry
            (file+datetree (concat org-directory "/todo.org"))
            "* ☛ TODO %^{Description}  %^g\n%?"
            :clock-in t
            :clock-keep t
            :empty-lines 1)
 
-          ("tt" "Todo Log - Ticket" entry
+          ("tt" "Todo - Ticket" entry
            (file+datetree (concat org-directory "/todo.org"))
            "* ☛ TODO #%^{Ticket} %^{Description}  %^g\n%?"
            :clock-in t
@@ -91,10 +92,10 @@
         '((sequence "☛ TODO(t)"
                     "|"
                     "✔ DONE(d)")
-          (sequence "⚑ WAIT(w)"
+          (sequence "⚑ WAIT(w@)"
                     "|")
           (sequence "|"
-                    "✘ CANCEL(c)")))
+                    "✘ CANCEL(c@)")))
 
   (setq org-todo-keyword-faces
         '(
