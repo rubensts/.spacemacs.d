@@ -37,41 +37,43 @@
 
 (defun rts-org/post-init-org ()
 
-  ;; org-babel
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-     (calc . t)
-     (clojure . t)
-     (ditaa . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (gnuplot . t)
-     (latex . t)
-     (ledger . t)
-     (octave . t)
-     (org . t)
-     (makefile . t)
-     (plantuml . t)
-     (python . t)
-     (R . t)
-     (ruby . t)
-     (sh . t)
-     (sql . t)))
+  ;; Clocking work time
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
+
+  ;; org-agenda
+  (setq org-agenda-files (list "~/org/clockin.org"
+                               "~/org/tasks.org"))
+
 
   ;; org-capture
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-default-notes-file (concat
+                                org-directory "/notes.org"))
 
   (setq org-capture-templates
-        '(
-          ("w" "Web bookmarks" entry
+        '(("w" "Web bookmarks" entry
            (file+headline (concat org-directory "/www.org") "Bookmarks")
-           "* %?%c %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%i\n" :empty-lines 1)
+           "* %?%c %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i\n"
+           :empty-lines 1)
 
-          ("t" "Tasks" entry
+          ("k" "Tasks" entry
            (file+headline (concat org-directory "/tasks.org") "Tasks")
-           "* ☛ TODO %^{Task} %^G\n %?\n %a" :clock-in t :clock-resume t)
-          ;;"* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+           "* ☛ TODO %^{Task} %^g\n %?\n %a"
+          :empty-lines 1)
+
+          ("tl" "Todo Log" entry
+           (file+datetree (concat org-directory "/todo.org"))
+           "* ☛ TODO %^{Description}  %^g\n%?"
+           :clock-in t
+           :clock-keep t
+           :empty-lines 1)
+
+          ("tt" "Todo Log - Ticket" entry
+           (file+datetree (concat org-directory "/todo.org"))
+           "* ☛ TODO #%^{Ticket} %^{Description}  %^g\n%?"
+           :clock-in t
+           :clock-keep t
+           :empty-lines 1)
 
           ("j" "Journal" entry
            (file+datetree (concat org-directory "/journal.org"))
@@ -79,7 +81,7 @@
 
           ("n" "Notes" entry
            (file+headline (concat org-directory "/notes.org") "Notes")
-           "* %^{Header} %^G\n %u\n\n %?")))
+           "* %^{Header} %^G\n %u\n %?")))
 
   ;; General org settings
   (setq org-tags-column -80)
@@ -103,9 +105,28 @@
           ))
 
 
-  ;; Clocking work time
-  (setq org-clock-persist 'history)
-  (org-clock-persistence-insinuate)
+
+  ;; org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (calc . t)
+     (clojure . t)
+     (ditaa . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (gnuplot . t)
+     (latex . t)
+     (ledger . t)
+     (octave . t)
+     (org . t)
+     (makefile . t)
+     (plantuml . t)
+     (python . t)
+     (R . t)
+     (ruby . t)
+     (sh . t)
+     (sql . t)))
 
   )
 
