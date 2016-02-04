@@ -39,6 +39,9 @@ values."
      ansible
      clojure
      django
+     ;;(elfeed :variables
+     ;;        rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     pandoc
      python
      ;; My personal layers
      rts-general

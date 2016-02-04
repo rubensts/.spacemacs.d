@@ -55,7 +55,8 @@
         '(("w" "Web bookmarks" entry
            (file+headline (concat org-directory "/www.org") "Bookmarks")
            "* %?%c %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i\n"
-           :empty-lines 1)
+           :empty-lines 1
+           :immediate-finish)
 
           ("k" "Tasks" entry
            (file+headline (concat org-directory "/tasks.org") "Tasks")
