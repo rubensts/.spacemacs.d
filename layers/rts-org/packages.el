@@ -32,6 +32,7 @@
 (defconst rts-org-packages
   '(
     org
+    org-bullets
     (org-protocol :location built-in)
     ))
 
@@ -106,7 +107,6 @@
           ))
 
 
-
   ;; org-babel
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -130,6 +130,12 @@
      (sql . t)))
 
   )
+
+
+(defun rts-org/post-init-org-bullets ()
+  (setq org-bullets-bullet-list
+        '("◉" "◎" "⚫" "○" "►" "◇")))
+
 
 (defun rts-org/init-org-protocol ()
   (use-package org-protocol))

@@ -35,11 +35,13 @@ values."
      spell-checking
      syntax-checking
      version-control
-     ;; Layers included by me after the above default ones are loaded
-     ;;ansible
-     ;;clojure
-     ;;django
-     ;;python
+     ;; Extra spacemacs layers added after the above default ones are loaded
+     ansible
+     clojure
+     django
+     python
+     ;; My personal layers
+     rts-general
      rts-ispell
      rts-org
      )
