@@ -43,7 +43,7 @@
   (org-clock-persistence-insinuate)
 
   ;; org-agenda
-  (setq org-agenda-files (list "~/org/clockin.org"
+  (setq org-agenda-files (list "~/org/todo.org"
                                "~/org/tasks.org"))
 
 
