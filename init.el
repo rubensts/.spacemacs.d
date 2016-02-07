@@ -39,10 +39,12 @@ values."
      ansible
      clojure
      django
-     ;;(elfeed :variables
-     ;;        rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     (elfeed :variables
+             rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     finance
      pandoc
      python
+     sql
      ;; My personal layers
      rts-general
      rts-ispell
