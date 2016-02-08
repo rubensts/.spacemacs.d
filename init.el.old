@@ -31,24 +31,25 @@ values."
      org
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'eshell
-            shell-default-term-shell "/bin/zsh"
-            shell-enable-smart-eshell t)
+            shell-default-position 'bottom)
      spell-checking
      syntax-checking
      version-control
-     ;; Layers included by me after the above default ones are loaded
-     (elfeed :variables
-             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
-     my-org
-     latex
-     pandoc
+     ;; Extra spacemacs layers added after the above default ones are loaded
      ansible
-     python
      clojure
      django
+     (elfeed :variables
+             rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     finance
+     pandoc
+     python
      sql
+     ;; My personal layers
+     rts-general
+     rts-ispell
+     rts-org
+     rts-twittering
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -121,7 +122,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
