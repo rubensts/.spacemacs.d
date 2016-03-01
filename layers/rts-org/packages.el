@@ -82,6 +82,12 @@
            (file+datetree (concat org-directory "/journal.org"))
            "* %U %^{Title}\n %?%i\n %a")
 
+          ("a" "Articles" entry
+             (file+headline (concat org-directory "/articles.org") "Articles")
+             "* %^{Title} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?%i\n"
+             :empty-lines 1
+             :immediate-finish)
+
           ("n" "Notes" entry
            (file+headline (concat org-directory "/notes.org") "Notes")
            "* %^{Header} %^G\n %u\n %?")))

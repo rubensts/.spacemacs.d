@@ -49,7 +49,7 @@ values."
      rts-general
      rts-ispell
      rts-org
-     rts-twittering
+     ;;rts-twittering
      ;;rts-redmine
      )
    ;; List of additional packages that will be installed without being
