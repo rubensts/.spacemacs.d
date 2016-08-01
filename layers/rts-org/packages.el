@@ -43,9 +43,8 @@
   (org-clock-persistence-insinuate)
 
   ;; org-agenda
-  (setq org-agenda-files (list "~/org/todo.org"
-                               "~/org/tasks.org"))
-
+  (setq org-agenda-files (list "todo.org"
+                               "tasks.org"))
 
   ;; org-capture
   (setq org-default-notes-file (concat
@@ -53,47 +52,44 @@
 
   (setq org-capture-templates
         '(("w" "Web bookmarks" entry
-           (file+headline (concat org-directory "/www.org") "Bookmarks")
+           (file+headline "www.org" "Bookmarks")
            "* %?%c %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%i\n"
            :empty-lines 1
            :immediate-finish)
 
           ("k" "Tasks" entry
-           (file+headline (concat org-directory "/tasks.org") "Tasks")
+           (file+headline "tasks.org" "Tasks")
            "* ☛ TODO %^{Task} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?%i"
           :empty-lines 1)
 
           ("t" "Todo")
           ("ti" "Todo - Intagible" entry
-           (file+datetree (concat org-directory "/todo.org"))
+           (file+datetree "todo.org")
            "* ☛ TODO %^{Description}  %^g\n%?"
            :clock-in t
            :clock-keep t
            :empty-lines 1)
 
           ("tt" "Todo - Ticket" entry
-           (file+datetree (concat org-directory "/todo.org"))
+           (file+datetree "todo.org")
            "* ☛ TODO #%^{Ticket} %^{Description}  %^g\n%?"
            :clock-in t
            :clock-keep t
            :empty-lines 1)
 
           ("j" "Journal" entry
-           (file+datetree (concat org-directory "/journal.org"))
+           (file+datetree "journal.org")
            "* %U %^{Title}\n %?%i\n %a")
 
           ("a" "Articles" entry
-             (file+headline (concat org-directory "/articles.org") "Articles")
+             (file+headline "articles.org" "Articles")
              "* %^{Title} %^g\n:PROPERTIES:\n:CREATED: %U\n:END:\n%?%i\n"
              :empty-lines 1
              :immediate-finish)
 
           ("n" "Notes" entry
-           (file+headline (concat org-directory "/notes.org") "Notes")
+           (file+headline "notes.org" "Notes")
            "* %^{Header} %^G\n %u\n %?")))
-
-  ;; General org settings
-  (setq org-tags-column -80)
 
   ;; project management
   (setq org-todo-keywords
@@ -113,6 +109,12 @@
           ("✘ CANCEL" :foreground "#00bfff" :weight bold)
           ))
 
+  ;; General org settings
+  (setq org-tags-column -80)
+  (setq org-ellipsis "⤵")
+  ;;(setq org-src-fontify-natively t)       ;; fontify code in code blocks
+  ;;(setq org-fontify-whole-heading-line t) ;; fontify the whole line for headings
+  ;;(setq org-startup-indented t)
 
   ;; org-babel
   (org-babel-do-load-languages
