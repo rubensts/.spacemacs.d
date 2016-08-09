@@ -42,9 +42,6 @@ values."
      django
      (elfeed :variables
              rmh-elfeed-org-files (list "~/org/elfeed.org"))
-     ;; email (testing mu4e for now - it depends of gnus)
-     gnus
-     mu4e
      finance
      pandoc
      python
