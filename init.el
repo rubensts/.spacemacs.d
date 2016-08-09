@@ -36,6 +36,7 @@ values."
      syntax-checking
      version-control
      ;; Extra spacemacs layers added after the above default ones are loaded
+     asciidoc
      ansible
      clojure
      django
