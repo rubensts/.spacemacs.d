@@ -41,6 +41,9 @@ values."
      django
      (elfeed :variables
              rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     ;; email (testing mu4e for now - it depends of gnus)
+     gnus
+     mu4e
      finance
      pandoc
      python
@@ -267,7 +270,68 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;;; mu4e configuration
+  ;; Set up some common mu4e variables
+  (setq mu4e-maildir "~/Maildir"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval nil
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t)
+
+  ;; Multiple accounts
+  (setq mu4e-account-alist
+  '(("personal"
+     ;; Under each account, set the account-specific variables you want.
+     (mu4e-sent-messages-behavior delete)
+     (mu4e-sent-folder "/gmail/sent")
+     (mu4e-drafts-folder "/gmail/drafts")
+     (mu4e-trash-folder "/gmail/trash")
+     (mu4e-refile-folder "/gmail/archive")
+     (user-mail-address "rubensts@gmail.com")
+     (user-full-name "Rubens Souza"))
+    ("2ndQ"
+     (mu4e-sent-messages-behavior delete)
+     (mu4e-sent-folder "/2ndQ/sent")
+     (mu4e-drafts-folder "/2ndQ/drafts")
+     (mu4e-trash-folder "/2ndQ/trash")
+     (mu4e-refile-folder "/2ndQ/archive")
+     (user-mail-address "rubens.souza@2ndquadrant.it")
+     (user-full-name "Rubens Souza"))))
+  (mu4e/mail-account-reset)
+
+  ;; Mail directory shortcuts
+  (setq mu4e-maildir-shortcuts
+        '(("/gmail/INBOX" . ?g)
+          ("/2ndQ/INBOX" . ?2)))
+
+  ;; Bookmarks
+  (setq mu4e-bookmarks
+        `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+          ("date:today..now" "Today's messages" ?t)
+          ("date:7d..now" "Last 7 days" ?w)
+          ("mime:image/*" "Messages with images" ?p)
+          (,(mapconcat 'identity
+                       (mapcar
+                        (lambda (maildir)
+                          (concat "maildir:" (car maildir)))
+                        mu4e-maildir-shortcuts) " OR ")
+           "All inboxes" ?i)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(paradox-github-token t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
