@@ -37,14 +37,16 @@
   (defun rts-ispell/post-init-flyspell ()
 
     ;; General settings for ispell
-    (setq-default ispell-program-name   "hunspell"
-                  ispell-really-hunspell t
-                  ispell-check-comments  t
-                  ispell-extra-args      '("-i" "utf-8")
-                  ispell-dictionary      "en_GB")
+    (setq-default
+     ;;ispell-program-name   "hunspell"
+     ispell-really-hunspell t
+     ispell-check-comments  t
+     ispell-extra-args      '("-i" "utf-8")
+     ;;ispell-dictionary      "en_GB"
+     )
 
-    (when (eq system-type 'darwin)
-        (setenv "DICTIONARY" "en_GB"))
+   ;; (when (eq system-type 'darwin)
+   ;;     (setenv "DICTIONARY" "en_GB"))
 
     ;; Switch between the most used dictionaries in my case
     (defun rts-switch-dictionary ()
