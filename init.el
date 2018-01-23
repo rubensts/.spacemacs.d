@@ -52,17 +52,17 @@ values."
      ;; Extra layers called after the default ones above are loaded:
      asciidoc
      ansible
-     clojure
-     django
-     (elfeed :variables
-             rmh-elfeed-org-files (list "~/org/elfeed.org"))
-     finance
-     javascript
-     lua
-     nginx
+     ;;clojure
+     ;;django
+     ;;(elfeed :variables
+     ;;        rmh-elfeed-org-files (list "~/org/elfeed.org"))
+     ;;finance
+     ;;javascript
+     ;;lua
+     ;;nginx
      osx
      pandoc
-     php
+     ;;php
      python
      ruby
      sql
@@ -151,14 +151,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(leuven
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;;dotspacemacs-default-font '("Source Code Pro for Powerline"
-   dotspacemacs-default-font '("Fira Code Retina"
+   dotspacemacs-default-font '("Source Code Pro for Powerline"
+   ;;dotspacemacs-default-font '("Fira Code"
                                :size 11
                                :weight normal
                                :width normal
@@ -246,14 +247,14 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -353,7 +354,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify yaml-mode xterm-color web-beautify vagrant-tramp vagrant unfill sql-indent smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pyvenv pytest pyenv-mode py-isort pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets pandoc-mode ox-pandoc ht orgit org-projectile org-present org-pomodoro alert log4e gntp org-download nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow lua-mode livid-mode skewer-mode live-py-mode ledger-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jinja2-mode hy-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck-ledger flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help elfeed-web simple-httpd elfeed-org elfeed-goodies ace-jump-mode noflet elfeed drupal-mode php-mode diff-hl cython-mode company-tern dash-functional tern company-statistics company-ansible company-anaconda company coffee-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode chruby bundler inf-ruby auto-yasnippet yasnippet auto-dictionary ansible-doc ansible anaconda-mode pythonic adoc-mode markup-faces ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
+    (org-category-capture ghub let-alist packed reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify yaml-mode xterm-color web-beautify vagrant-tramp vagrant unfill sql-indent smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pyvenv pytest pyenv-mode py-isort pony-mode pip-requirements phpunit phpcbf php-extras php-auto-yasnippets pandoc-mode ox-pandoc ht orgit org-projectile org-present org-pomodoro alert log4e gntp org-download nginx-mode mwim multi-term mmm-mode minitest markdown-toc markdown-mode magit-gitflow lua-mode livid-mode skewer-mode live-py-mode ledger-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc jinja2-mode hy-mode htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck-ledger flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help elfeed-web simple-httpd elfeed-org elfeed-goodies ace-jump-mode noflet elfeed drupal-mode php-mode diff-hl cython-mode company-tern dash-functional tern company-statistics company-ansible company-anaconda company coffee-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode chruby bundler inf-ruby auto-yasnippet yasnippet auto-dictionary ansible-doc ansible anaconda-mode pythonic adoc-mode markup-faces ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

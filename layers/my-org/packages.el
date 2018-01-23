@@ -50,10 +50,6 @@
   (setq org-agenda-files (list "todo.org"
                                "tasks.org"))
 
-  ;; org-capture
-  (setq org-default-notes-file (concat
-                                org-directory "/notes.org"))
-
   (setq org-capture-templates
         '(("w" "Web bookmarks" entry
            (file+headline "www.org" "Bookmarks")
@@ -114,7 +110,7 @@
           ))
 
   ;; General org settings
-  (setq org-tags-column 90                      ; column to which the tags have to be indented
+  (setq org-tags-column -90                     ; column to which the tags have to be indented
         org-ellipsis "⤵"                        ; ⬎, ⤷, ⤵, ⚡
         org-fontify-whole-heading-line t        ; fontify the whole line for headings
         org-fontify-done-headline t
@@ -123,37 +119,32 @@
         org-hide-emphasis-markers t             ; hide markup elements, e.g. * *, / /, _ _
         org-cycle-include-plain-lists t
         org-list-allow-alphabetical t
-        org-latex-create-formula-image-program 'imagemagick   ; preview latex fragments
+        org-preview-latex-default-process 'imagemagick   ; preview latex fragments
 
         ;; Code blocks to play nicelly on org-babel
-        org-edit-src-content-indentation 0      ; number of whitespaces added to the code block indentation (after #begin)
-        org-src-tab-acts-natively t             ; TAB acts natively as it was in the language major mode
+        ;;org-edit-src-content-indentation 0      ; number of whitespaces added to the code block indentation (after #begin)
         org-src-preserve-indentation t          ; preserve indentation when exporting blocks
-        org-src-fontify-natively t              ; highlights code-blocks natively
+        org-src-tab-acts-natively t             ; TAB acts natively as in the language major mode
         org-src-window-setup 'current-window    ; open code-blocks in the current window
-        org-confirm-babel-evaluate nil          ; don't ask for confirmation when compiling code-blocks
+        ;;org-confirm-babel-evaluate nil          ; don't ask for confirmation when compiling code-blocks
         )
 
   ;; org-babel
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((calc . t)
-     (clojure . t)
-     (ditaa . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (gnuplot . t)
-     (latex . t)
-     (ledger . t)
-     (octave . t)
-     (org . t)
-     (makefile . t)
-     (plantuml . t)
-     (python . t)
-     (R . t)
-     (ruby . t)
-     (sh . t)
-     (sql . t)))
+  ;;(org-babel-do-load-languages
+  ;; 'org-babel-load-languages
+  ;; '((calc . t)
+  ;;   (ditaa . t)
+  ;;   (dot . t)
+  ;;   (gnuplot . t)
+  ;;   (latex . t)
+  ;;   (ledger . t)
+  ;;   (octave . t)
+  ;;   (org . t)
+  ;;   (makefile . t)
+  ;;   (plantuml . t)
+  ;;   (R . t)
+  ;;   (ruby . t)
+  ;;   (sql . t)))
   )
 
 (defun my-org/post-init-org-bullets ()
